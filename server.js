@@ -19,14 +19,14 @@ app.get('/admin', (req, res) => {
 
 app.get('/characters', async (req, res) => {
   try {
-    let apiUrl = "https://rickandmortyapi.com/api/character";
+    let apiUrl = "https://rickandmortyapi.com/api/character/?species=Human";
     if(req.query.page){
-      apiUrl = apiUrl +  "?page="+  req.query.page;
+      apiUrl = apiUrl +  "&page="+  req.query.page;
       console.log(apiUrl);
     }
+
       await axios.get(apiUrl)
       .then(ret => {
-
         console.log(ret.data);
         res.send(JSON.stringify(ret.data))
       })
